@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+        <title>EMPLOYEE MANAGEMENT SYSTEM</title>
+
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 20px;
+                background-color: black;
+            }
+
+            h1{
+                text-align: center;
+                color: rgb(57, 18, 186);
+            }
+
+            #container{
+                max-width: 800px;
+                margin: 0 auto;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(1, 1, 1, 0.445);
+            }
+
+            table{
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+            }
+
+            table, th, td{
+                border: 1px solid rgb(221, 221, 221);
+            }
+
+            th, td{
+                padding: 12px;
+                text-align: left;
+            }
+
+            th{
+                background-color: rgb(240, 16, 16);
+            }
+
+            form{
+                margin-bottom: 20px;
+            }
+
+            label{
+                display: block;
+                margin-bottom: 8px;
+                color: rgb(226, 167, 39);
+            }
+
+            input[type = "text"]{
+                width: 100%;
+                padding: 8px;
+                box-sizing: border-box;
+                border: 1px solid rgb(155, 4, 169);
+                border-radius: 4px;
+                margin-bottom: 16px;
+            }
+
+            button{
+            padding: 12px 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+            .delete-btn {
+                background-color: #f44336;
+            }
+
+            .delete-btn:hover {
+                background-color: #d32f2f;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="container">
+            <h1>Employee Management System</h1>
+    
+            <form id="employeeForm">
+                <label for="employeeName">Employee Name:</label>
+                <input type="text" id="employeeName" name="employeeName" required>
+    
+                <label for="employeePosition">Employee Position:</label>
+                <input type="text" id="employeePosition" name="employeePosition" required>
+    
+                <button type="button" onclick="addEmployee()">Add Employee</button>
+            </form>
+    
+            <table id="employeeTable">
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Action</th>
+                </tr>
+            </table>
+        </div>
+        
+        <script>
+            let employeeId = 1;
+    
+            function addEmployee() {
+                const name = document.getElementById('employeeName').value;
+                const position = document.getElementById('employeePosition').value;
+    
+                if (name && position) {
+                    const table = document.getElementById('employeeTable');
+                    const newRow = table.insertRow(-1);
+    
+                    const cell1 = newRow.insertCell(0);
+                    const cell2 = newRow.insertCell(1);
+                    const cell3 = newRow.insertCell(2);
+                    const cell4 = newRow.insertCell(3);
+    
+                    cell1.textContent = employeeId++;
+                    cell2.textContent = name;
+                    cell3.textContent = position;
+                    cell4.innerHTML = '<button onclick="deleteEmployee(this)" class="delete-btn">Delete</button>';
+    
+                    document.getElementById('employeeName').value = '';
+                    document.getElementById('employeePosition').value = '';
+                } else {
+                    alert('Please enter both name and position.');
+                }
+            }
+    
+            function deleteEmployee(button) {
+                const row = button.parentNode.parentNode;
+                row.parentNode.removeChild(row);
+            }
+        </script>
+        
+    </body>
+</html>

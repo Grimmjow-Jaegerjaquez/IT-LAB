@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Greetings and Clock</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #ffffff;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+            }   
+            #greeting {
+                font-size: 24px;
+                margin: 20px;
+            }
+
+            #clock {
+                font-size: 100px;
+                border: 10px solid #0080ff;
+                color: #00c29e;
+                margin: 20px;
+                padding: 10px;
+                display: inline-block;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="greeting"></div>
+        <div id="clock"></div>
+
+        <script>
+            function updateGreetingAndClock() {
+                const greetingElement = document.getElementById('greeting');
+                const clockElement = document.getElementById('clock');
+                const currentDate = new Date();
+                const currentHour = currentDate.getHours();
+                
+                let greetingMessage, textColor;
+                
+                if (currentHour >= 5 && currentHour < 12) {
+                    greetingMessage = 'Good morning!';
+                    textColor = 'green';
+                } else if (currentHour >= 12 && currentHour < 18) {
+                    greetingMessage = 'Good afternoon!';
+                    textColor = 'orange';
+                } else {
+                    greetingMessage = 'Good evening!';
+                    textColor = 'blue';
+                }
+                greetingElement.textContent = greetingMessage;
+                greetingElement.style.color = textColor;
+                const formattedTime = `${currentDate.getHours()}:${String(currentDate.getMinutes()).padStart(2, '0')}:${String(currentDate.getSeconds()).padStart(2, '0')}`;
+                clockElement.textContent = formattedTime;
+            }
+
+  // Update the greeting and clock every second
+            setInterval(updateGreetingAndClock, 1000);
+
+  // Initial update
+            updateGreetingAndClock();
+        </script>
+
+    </body>
+</html>

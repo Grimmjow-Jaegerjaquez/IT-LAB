@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Color Selector</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                transition: background-color 0.5s;
+            }
+            #color-selector {
+                border: 2px solid #333;
+                padding: 20px;
+                margin: 20px auto;
+                max-width: 300px;
+                border-radius: 10px;
+            }
+            button {
+                margin: 5px;
+                padding: 10px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #f0f0f0;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="color-selector">
+            <button onclick="changeColor('red')">Red</button>
+            <button onclick="changeColor('green')">Green</button>
+            <button onclick="changeColor('blue')">Blue</button>
+        </div>
+
+        <script>
+            function changeColor(color) {
+                document.body.style.backgroundColor = color;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Timetable</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .carousel-inner {
+            background-color: #f5f5f5;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Class Timetable</h2>
+
+        <!-- Carousel for Days of the Week -->
+        <div id="dayCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+
+                    <h3 class="text-center">Monday</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Subject</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>9:00 AM - 10:30 AM</td>
+                                <td>Mathematics</td>
+                            </tr>
+                            <tr>
+                                <td>11:00 AM - 12:30 PM</td>
+                                <td>Science</td>
+                            </tr>
+                            <!-- Add more rows for Monday if needed -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Add more carousel items for each day of the week -->
+
+                <!-- Example for Tuesday -->
+                <div class="carousel-item">
+                    <h3 class="text-center">Tuesday</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Subject</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>9:00 AM - 10:30 AM</td>
+                                <td>English</td>
+                            </tr>
+                            <tr>
+                                <td>11:00 AM - 12:30 PM</td>
+                                <td>History</td>
+                            </tr>
+                            <!-- Add more rows for Tuesday if needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#dayCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#dayCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

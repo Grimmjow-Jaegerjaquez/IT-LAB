@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Grade Calculator</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                transition: background-color 0.5s, color 0.5s;
+            }
+            
+            #grade-calculator {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border: 2px solid #333;
+                margin: 20px auto;
+                max-width: 400px;
+                border-radius: 10px;
+            }
+
+            h1 {
+                font-size: 36px;
+                color: #333;
+                margin-bottom: 20px;
+            }
+            
+            input {
+                margin: 10px;
+                padding: 8px;
+                width: calc(100% - 20px);
+                box-sizing: border-box;
+            }
+
+            #calculate-btn {
+                margin: 10px;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            #grade-result {
+                font-size: 24px;
+                margin: 20px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="grade-calculator">
+            <h1>Grade Calculator</h1>
+            <input type="text" id="subject1" placeholder="Enter marks for Subject 1" />
+            <input type="text" id="subject2" placeholder="Enter marks for Subject 2" />
+            <input type="text" id="subject3" placeholder="Enter marks for Subject 3" />
+            <input type="text" id="subject4" placeholder="Enter marks for Subject 4" />
+            <button id="calculate-btn" onclick="calculateGrade()">Calculate Grade</button>
+            <div id="grade-result"></div>
+        </div>
+
+        <script>
+            function calculateGrade() {
+                const subject1 = parseFloat(document.getElementById('subject1').value) || 0;
+                const subject2 = parseFloat(document.getElementById('subject2').value) || 0;
+                const subject3 = parseFloat(document.getElementById('subject3').value) || 0;
+                const subject4 = parseFloat(document.getElementById('subject4').value) || 0;
+
+                const average = (subject1 + subject2 + subject3 + subject4) / 4;
+                let grade = '';
+
+                if (average >= 90) {
+                    grade = 'A';
+                    document.body.style.backgroundColor = '#FF6347'; // Tomato
+                    document.body.style.color = '#000';
+                } else if (average >= 80) {
+                    grade = 'B';
+                    document.body.style.backgroundColor = '#FFD700'; // Gold
+                    document.body.style.color = '#000';
+                } else if (average >= 70) {
+                    grade = 'C';
+                    document.body.style.backgroundColor = '#7FFF00'; // Chartreuse
+                    document.body.style.color = '#000';
+                } else if (average >= 60) {
+                    grade = 'D';
+                    document.body.style.backgroundColor = '#00BFFF'; // DeepSkyBlue
+                    document.body.style.color = '#000';
+                } else {
+                    grade = 'Below D';
+                    document.body.style.backgroundColor = '#FFF';
+                    document.body.style.color = '#000';
+                }
+
+                const gradeResultElement = document.getElementById('grade-result');
+                gradeResultElement.textContent = `Your Grade: ${grade} (Average: ${average.toFixed(2)})`;
+            }         
+        </script>
+    </body>
+</html>
