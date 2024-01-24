@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bill Generator</title>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                text-align: center;
+                margin: 50px;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            input, select {
+                margin-bottom: 15px;
+            }
+
+            button {
+                padding: 10px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+
+        <label for="brand">Select Brand:</label>
+        <select id="brand">
+            <option value="HP">HP</option>
+            <option value="Nokia">Nokia</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Motorola">Motorola</option>
+            <option value="Apple">Apple</option>
+        </select>
+
+        <label>Choose Items:</label>
+        <input type="checkbox" id="mobile" value="Mobile"> Mobile
+        <input type="checkbox" id="laptop" value="Laptop"> Laptop
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" placeholder="Enter quantity">
+
+        <button id="produceBill">Produce Bill</button>
+
+        <script>
+            $(document).ready(function() {
+                $('#produceBill').click(function() {
+                    var brand = $('#brand').val();
+                    var mobileChecked = $('#mobile').prop('checked');
+                    var laptopChecked = $('#laptop').prop('checked');
+                    var quantity = parseInt($('#quantity').val()) || 0;
+
+                    var totalAmount = 0;
+
+                // Price for each item
+                    var brandPrice = {
+                        'HP': 500,
+                        'Nokia': 300,
+                        'Samsung': 800,
+                        'Motorola': 400,
+                        'Apple': 1200
+                    };
+
+                    var mobilePrice = 200;
+                    var laptopPrice = 800;
+
+                    // Calculate total amount
+                    if (brand && brandPrice[brand]) {
+                        totalAmount += brandPrice[brand] * quantity;
+                    }
+
+                    if (mobileChecked) {
+                        totalAmount += mobilePrice * quantity;
+                    }
+
+                    if (laptopChecked) {
+                        totalAmount += laptopPrice * quantity;
+                    }
+
+                // Display the total amount
+                    alert('Total Amount: $' + totalAmount);
+                });
+            });
+        </script>
+    </body>
+</html>

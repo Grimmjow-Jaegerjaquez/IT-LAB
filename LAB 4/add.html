@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Ball Animation</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        #container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: #ecf0f1;
+            border-radius: 50%;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+
+        #ball {
+            position: absolute;
+            background-color: #3498db;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <div id="ball"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var container = $('#container');
+        var ball = $('#ball');
+
+        // Initial position, speed, and ball size
+        var position = { top: container.height() / 2, left: container.width() / 2 };
+        var speed = { x: 2, y: 1 };
+        var size = 5;
+
+        function updateBall() {
+            // Update position
+            position.top += speed.y;
+            position.left += speed.x;
+
+            // Bounce off the container edges
+            if (position.left <= 0 || position.left >= container.width() - size) {
+                speed.x = -speed.x;
+            }
+
+            if (position.top <= 0 || position.top >= container.height() - size) {
+                speed.y = -speed.y;
+            }
+
+            // Update color trail
+            var color = getRandomColor();
+            ball.css('background-color', color);
+
+            // Move the ball
+            ball.css({
+                top: Math.max(0, Math.min(position.top - size / 2, container.height() - size)),
+                left: Math.max(0, Math.min(position.left - size / 2, container.width() - size)),
+                width: size + 'px',
+                height: size + 'px'
+            });
+
+            // Increase speed and size gradually
+            speed.x += 0.005;
+            speed.y += 0.005;
+            size += 0.1;
+
+            // Continue the animation if the ball size is less than the container's size
+            if (size < container.width() / 2) {
+                requestAnimationFrame(updateBall);
+            }
+        }
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Start the animation
+        updateBall();
+    });
+</script>
+
+</body>
+</html>

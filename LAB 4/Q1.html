@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table{
+                border-collapse: collapse;
+                width: 50%;
+                margin: 20px auto;
+            }
+
+            th, td{
+                border: 1px solid #00ffdd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            th{
+                background-color: teal;
+            }
+
+            tr:nth-child(odd){
+                background-color: gold;
+            }
+
+            tr:nth-child(even){
+                background-color: blueviolet;
+            }
+
+            img{
+                display: block;
+                margin: 20px;
+            }
+        </style>
+        <script src = "https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    </head>
+
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column 1</th>
+                    <th>Column 2</th>
+                    <th>Column 3</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                    <td>Data 3</td>
+                </tr>
+
+                <tr>
+                    <td>Data 4</td>
+                    <td>Data 5</td>
+                    <td>Data 6</td>
+                </tr>
+
+                <tr>
+                    <td>Data 7</td>
+                    <td>Data 8</td>
+                    <td>Data 9</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <img src="resources/meme.jpg" id="movingImage" width="300">
+        <button id="moveButton">Move Left</button>
+
+        <script>
+            $(document).ready(function() {
+                $("#moveButton").click(function(){
+                    var table = $('table');
+                    var img = $('#movingImage');
+
+                    var currentMargin = parseInt(table.css('margin-left'));
+
+                    table.animate({marginLeft: (currentMargin - 50) + 'px'});
+                    img.animate({marginLeft: (currentMargin - 50) + 'px'});
+                });
+            });
+        </script>
+    </body>
+</html>

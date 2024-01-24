@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Birthday Card Designer</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                text-align: center;
+            }
+
+            #card {
+                width: 300px;
+                height: 200px;
+                border: 2px solid #ccc;
+                margin: 50px auto;
+                padding: 20px;
+                position: relative;
+                background-size: cover;
+            }
+
+            #messageInput {
+                margin-bottom: 10px;
+                width: 80%;
+                padding: 8px;
+                font-size: 16px;
+            }
+
+            #message {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            #designControls {
+                margin-top: 20px;
+            }
+
+            button {
+                padding: 10px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    </head>
+    <body>
+        <div>
+            <label for="messageInput">Type a Message:</label>
+            <input type="text" id="messageInput" placeholder="Enter your message">
+        </div>
+
+        <div id="card">
+            <div id="message">Happy Birthday!</div>
+        </div>
+
+        <div id="designControls">
+            <label for="fontSize">Font Size:</label>
+            <input type="range" id="fontSize" min="12" max="24" value="18">
+        
+            <label for="bgImage">Background Image:</label>
+            <select id="bgImage">
+                <option value="https://th.bing.com/th?id=OIP.I2K5n8zK189D4If4CdoYzAHaHe&w=248&h=251&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2">Image 1</option>
+                <option value="https://th.bing.com/th?id=OIP.QwcAvSnj_aJeDbsFwGQ1hgHaFM&w=298&h=209&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2">Image 2</option>
+                <option value="https://th.bing.com/th?id=OIP.En2y6m_o7FysLXo7eKJRygHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2">Image 3</option>
+                <!-- Add more options as needed -->
+            </select>
+        
+            <label for="textColor">Text Color:</label>
+            <input type="color" id="textColor" value="#000000">
+        
+            <button onclick="customizeCard()">Customize Card</button>
+        </div>
+
+        <script>
+            function customizeCard() {
+                var message = $('#messageInput').val();
+                var fontSize = $('#fontSize').val() + 'px';
+                var bgImage = $('#bgImage').val();
+                var textColor = $('#textColor').val();
+            
+                $('#message').text(message || 'Happy Birthday!');
+                $('#message').css({
+                    'font-size': fontSize,
+                    'color': textColor
+                });
+                $('#card').css('background-image', 'url(' + bgImage + ')');
+            }
+        </script>
+    </body>
+</html>
