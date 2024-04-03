@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CGPA Result</title>
+</head>
+<body>
+	<h1>Student Detail with CGPA Score</h1>
+	<table border="1">
+		<tr>
+			<td width="30%">Student Name:</td>
+			<td width="70%">{{ name }}</td>
+		</tr>
+		<tr>
+			<td width="30%">CGPA Score:</td>
+			<td width="70%">{{ cgpa }}</td>
+		</tr>
+	</table>
+	<a href="{% url 'calculate_cgpa' %}">Back to Calculation</a>
+</body>
+</html>
