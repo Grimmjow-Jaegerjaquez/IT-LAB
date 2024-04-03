@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Successfully Registered</title>
+</head>
+<body>
+	<h1>Welcome, {{ user_name }} !</h1>
+	{% if email %}
+	<p>Your E-mail ID: {{ email }}</p>
+	{% endif %}
+	{% if phone_number %}
+	<p>Your Phone Number: {{ phone_number }}</p>
+	{% endif %}
+	<p><a href="/">Return Home</a></p>
+</body>
+</html>
